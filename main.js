@@ -1,57 +1,56 @@
-const n1 = document.getElementById("n1");
-const n2 = document.getElementById("n2");
-const resultado = document.getElementById("resultado");
+$(document).ready(function() {
+    const $n1 = $("#n1");
+    const $n2 = $("#n2");
+    const $resultado = $("#resultado");
 
-document.getElementById("soma").addEventListener("click", soma);
-document.getElementById("subtracao").addEventListener("click", subtracao);
-document.getElementById("divisao").addEventListener("click", divisao);
-document.getElementById("multiplicacao").addEventListener("click", multiplicacao);
+    $("#soma").on("click", function() {
+        if ($n1.val() === "" || $n2.val() === "") {
+            alert("Por favor, insira valores nos dois campos.");
+            return;
+        }
+        const calculo = parseFloat($n1.val()) + parseFloat($n2.val());
+        $resultado.text(calculo);
+    });
 
-function soma(){
-    if (n1.value === "" || n2.value === "") {
-        alert("Por favor, insira valores nos dois campos.");
-        return;
-    }
-    const calculo = parseFloat(n1.value) + parseFloat(n2.value);
-    resultado.textContent = calculo;
-}
+    $("#subtracao").on("click", function() {
+        if ($n1.val() === "" || $n2.val() === "") {
+            alert("Por favor, insira valores nos dois campos.");
+            return;
+        }
+        const calculo = parseFloat($n1.val()) - parseFloat($n2.val());
+        $resultado.text(calculo);
+    });
 
-function subtracao(){
-    if (n1.value === "" || n2.value === "") {
-        alert("Por favor, insira valores nos dois campos.");
-        return;
-    }
-    const calculo = parseFloat(n1.value) - parseFloat(n2.value);
-    resultado.textContent = calculo;
-}
+    $("#divisao").on("click", function() {
+        if ($n1.val() === "" || $n2.val() === "") {
+            alert("Por favor, insira valores nos dois campos.");
+            return;
+        }
+        const calculo = parseFloat($n1.val()) / parseFloat($n2.val());
+        $resultado.text(calculo);
+    });
 
-function divisao(){
-    if (n1.value === "" || n2.value === "") {
-        alert("Por favor, insira valores nos dois campos.");
-        return;
-    }
-    const calculo = parseFloat(n1.value) / parseFloat(n2.value);
-    resultado.textContent = calculo;
-}
+    $("#multiplicacao").on("click", function() {
+        if ($n1.val() === "" || $n2.val() === "") {
+            alert("Por favor, insira valores nos dois campos.");
+            return;
+        }
+        const calculo = parseFloat($n1.val()) * parseFloat($n2.val());
+        $resultado.text(calculo);
+    });
 
-function multiplicacao(){
-    if (n1.value === "" || n2.value === "") {
-        alert("Por favor, insira valores nos dois campos.");
-        return;
-    }
-    const calculo = parseFloat(n1.value) * parseFloat(n2.value);
-    resultado.textContent = calculo;
-}
+    const $nomeInput = $("#nome");
+    const $saudacao = $("#saudacao");
+    const $confirmarNomeBtn = $("#confirmarNome");
+    const $nomeSection = $("#nomeSection");
 
-const nomeInput = document.getElementById("nome");
-const saudacao = document.getElementById("saudacao");
-const confirmarNomeBtn = document.getElementById("confirmarNome");
-
-confirmarNomeBtn.addEventListener("click", function() {
-    if (nomeInput.value === "") {
-        alert("Por favor, insira seu nome.");
-        return;
-    }
-    const nome = nomeInput.value;
-    saudacao.textContent = `Olá mundo, ${nome}`;
+    $confirmarNomeBtn.on("click", function() {
+        if ($nomeInput.val() === "") {
+            alert("Por favor, insira seu nome.");
+            return;
+        }
+        const nome = $nomeInput.val();
+        $saudacao.text(`Olá mundo, ${nome}`);
+        $nomeSection.hide();
+    });
 });
